@@ -10,13 +10,21 @@ namespace Writer
         private int size;
         private string[] names;
         private string[] values;
-        public Dictionary<string, string> settings = new Dictionary<string, string>();
+
+        public static Dictionary<string, string> options;
+
         public JsonWriter(int size)
         {
             this.size = size;
-            names = new string[size];
-            values = new string[size];
+            this.names = new string[size];
+            this.values = new string[size];
+            options = new Dictionary<string, string>();
         }
+        public JsonWriter()
+        {
+
+        }
+
         public JsonWriter(int size, string[] names, string[] values)
         {
             this.size = size;
@@ -24,6 +32,18 @@ namespace Writer
             this.values = new string[size];
             AddNames(names);
             AddValues(values);
+            options = new Dictionary<string, string>();
+        }
+
+        public void updateOption(string name,string newvalue)
+        {
+            options[name] = newvalue;
+        }
+        public void updateSize(int size)
+        {
+            this.size = size;
+            this.names = new string[size];
+            this.values = new string[size];
         }
         public void AddNames(string[] names)
         {
@@ -44,20 +64,21 @@ namespace Writer
             if (values.Length == size)
             {
                 for (int i = 0; i < size; i++)
-            {
-                this.values[i] = values[i];
-            }
+                {
+                    this.values[i] = values[i];
+                }
             }
             else
             {
-                 throw argEx;
+                throw argEx;
             }
         }
         public void start()
         {
-            for(int i =0;i<size;i++)
+            for (int i = 0; i < size; i++)
             {
-                settings.Add(names[i],values[i]);
+                options.Add(names[i], values[i]);
+                Console.WriteLine("Added name: "+names[i]+" with value: "+values[i]);
             }
         }
 
