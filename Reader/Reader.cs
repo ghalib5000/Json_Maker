@@ -81,9 +81,22 @@ namespace Reader
             JObject jObject = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonString) as JObject;
             // Select a nested property using a single string:
             JToken jToken = jObject.SelectToken(name);
-            Console.WriteLine("returning value of "+name);
-           return jToken.ToString();
+            Console.WriteLine("returning value of " + name);
+            return jToken.ToString();
         }
+        /// <summary>
+        /// Returns the value of Object(use if your json has stored an object type).
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T ReturnValueOf<T>()
+        {
+            string jsonString = File.ReadAllText(pathnew);
+            T jObject = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(jsonString);
+            Console.WriteLine("returning values");
+            return jObject;
+        }
+
         /// <summary>
         /// Views all the names along with their values.
         /// </summary>

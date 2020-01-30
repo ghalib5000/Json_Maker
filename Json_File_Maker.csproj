@@ -2,17 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.5.0</Version>
+    <Version>1.8.0</Version>
     <Authors>Ghalib</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>An easy to use json file maker that simplifies the steps to make a json file using newtonsoft.json library</Description>
-    <PackageReleaseNotes>added the ability to add multiple items after entering the items for the first time</PackageReleaseNotes>
+    <PackageReleaseNotes>removed old single use method and replaced them with a generic method that can return value of any object</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Modules\Newtonsoft.Json.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
 </Project>

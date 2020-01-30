@@ -10,8 +10,9 @@ namespace Writer
         private int size;
         private string[] names;
         private string[] values;
+        private static Object list;
 
-        public static Dictionary<string, string> options;
+        private static Dictionary<string, string> options;
 
         public JsonWriter(int size)
         {
@@ -20,9 +21,27 @@ namespace Writer
             this.values = new string[size];
             options = new Dictionary<string, string>();
         }
+        public Object Getlist
+        {
+            get
+            {
+                return list;
+            }
+        }
+        public Dictionary<string, string> GetOptions
+        {
+            get
+            {
+                return options;
+            }
+        }
         public JsonWriter()
         {
 
+        }
+        public JsonWriter(Object list)
+        {
+            JsonWriter. list = list;
         }
 
         public JsonWriter(int size, string[] names, string[] values)
@@ -33,8 +52,8 @@ namespace Writer
             AddNames(names);
             AddValues(values);
             options = new Dictionary<string, string>();
+           
         }
-
         public void updateOption(string name,string newvalue)
         {
             options[name] = newvalue;
